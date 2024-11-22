@@ -1,35 +1,28 @@
-function el(tag, attrs = {}, children = []) {
+function el(_tag, attrs = {}, children = []) {
   if (attrs instanceof Array) {
     children = attrs
     attrs = {}
   }
 
-  return {
-    tag,
-    attrs,
-    children,
-  }
-}
+  const { tag, id, className } = parse(_tag)
+  const element = document.createElement(tag)
 
-function render(vnode) {
-  const { tag, id, className } = parse(vnode.tag)
+  if (id) element.id = id
+  if (className) element.className = className
 
-  const el = document.createElement(tag)
-
-  if (id) el.id = id
-  if (className) el.className = className
-
-  for (const attr in vnode.attrs) {
-    el.setAttribute(attr, vnode.attrs[attr])
+  for (const attr in attrs) {
+    element.setAttribute(attr, attrs[attr])
   }
 
-  vnode.children.forEach((child) => {
-    typeof child === "string"
-      ? el.appendChild(document.createTextNode(child))
-      : el.appendChild(render(child))
+  children.forEach((child) => {
+    if (typeof child === "string") {
+      element.appendChild(document.createTextNode(child))
+    } else if (child instanceof Node) {
+      element.appendChild(child)
+    }
   })
 
-  return el
+  return element
 }
 
 function parse(query) {
@@ -53,4 +46,14 @@ function parse(query) {
   }
 }
 
-export { el, render }
+function getEl(parent) {
+  return (
+    (parent.nodeType && parent) || (!parent.el && parent) || getEl(parent.el)
+  )
+}
+
+function mount(parent, child) {
+  parent.appendChild(getEl(child))
+}
+
+export { el, mount }
