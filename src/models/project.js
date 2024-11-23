@@ -1,9 +1,20 @@
+import Todo from "./todo"
+
 export default class Project {
-  constructor(name) {
+  constructor(name, todos = []) {
     this.name = name
-    this.todos = []
+    this.todos = todos
   }
-  addTodo(todo) {
-    this.todos.push(todo)
+  addTodo(title, desc, dueDate, priority) {
+    this.todos.push(new Todo(title, desc, dueDate, priority))
+  }
+  removeTodo(id) {
+    this.todos.splice(id, 1)
+  }
+  getTodo(id) {
+    return this.todos[id]
+  }
+  getAllTodos() {
+    return this.todos
   }
 }
