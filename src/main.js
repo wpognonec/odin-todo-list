@@ -1,8 +1,10 @@
 import "./reset.css"
 import "./style.css"
-import inbox from "./views/Inbox"
+import Inbox from "./views/Inbox"
 import { mount } from "./lib/dom"
 
 const app = document.querySelector("#app")
+const inbox = new Inbox(app)
+inbox.updateTodoList()
 
-mount(app, inbox())
+// mount(app, inbox())
