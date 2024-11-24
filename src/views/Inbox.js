@@ -1,35 +1,12 @@
 import { TodoItem } from "../components/TodoItem"
 import { TodoForm } from "../components/TodoForm"
-import { el } from "../lib/dom"
+import { el, mount } from "../lib/dom"
 import Todos from "../models/todos"
+import AbstractTodos from "./AbstractTodos"
 
-// let todos = Todos.getAll()
-
-// const todoForm = TodoForm()
-// todoForm.addEventListener("submit", (e) => {
-//   e.preventDefault()
-//   const formData = new FormData(todoForm)
-//   let todo = {}
-//   formData.forEach((v, k) => (todo[k] = v))
-//   Todos.save(todo)
-// })
-
-// const element = el("div", [...todos.map((todo) => TodoItem(todo)), todoForm])
-
-// export default () => element
-
-export default class Inbox {
+export default class Inbox extends AbstractTodos {
   constructor(root) {
-    this.root = root
-    this.root.textContent = "test"
-  }
-  updateTodoList() {
-    let todos = Todos.getAll()
-    const todoForm = TodoForm()
-    const element = el("div", [
-      ...todos.map((todo) => TodoItem(todo)),
-      todoForm,
-    ])
-    this.root.appendChild(element)
+    super(root)
+    this.root.prepend(document.createTextNode("Index"))
   }
 }
