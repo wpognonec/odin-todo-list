@@ -1,16 +1,8 @@
 import "./reset.css"
 import "./style.css"
-import TodoItem from "./components/TodoItem"
+import inbox from "./views/Inbox"
 import { mount } from "./lib/dom"
-import Todos from "./models/todos"
-import generate from "./lib/generateTodos"
-generate()
 
 const app = document.querySelector("#app")
 
-let todos = Todos.getAll()
-
-todos.forEach((todo) => {
-  const todoEl = new TodoItem(todo)
-  mount(app, todoEl)
-})
+mount(app, inbox())

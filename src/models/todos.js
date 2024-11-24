@@ -5,9 +5,7 @@ class Todos {
     this.todos = []
     const todoStore = JSON.parse(localStorage.getItem("todos") || "[]")
     todoStore.forEach((todo) => {
-      this.todos.push(
-        new Todo(todo.id, todo.title, todo.desc, todo.dueDate, todo.priority)
-      )
+      this.todos.push(new Todo(todo))
     })
   }
   getAll() {
@@ -15,14 +13,12 @@ class Todos {
   }
   save(todo) {
     const todos = this.getAll()
-    let exist = todos.find((note) => note.id === todo.id)
+    let exist = todos.find((t) => t.id === todo.id)
     if (exist) {
       exist = todo
     } else {
       if (!todo.id) todo.id = uuidv4()
-      todos.push(
-        new Todo(todo.id, todo.title, todo.desc, todo.dueDate, todo.priority)
-      )
+      todos.push(new Todo(todo))
     }
     localStorage.setItem("todos", JSON.stringify(todos))
   }
@@ -33,19 +29,14 @@ class Todos {
 }
 
 class Todo {
-  constructor(id, title, desc, dueDate, priority) {
-    this.id = id
-    this.title = title
-    this.desc = desc
-    this.dueDate = dueDate
-    this.priority = priority
+  constructor(todo) {
+    this.id = todo.id
+    this.title = todo.title
+    this.desc = todo.desc
+    this.dueDate = todo.dueDate
+    this.priority = todo.priority
+    this.projectId = todo.projectId || 0
   }
 }
 
 export default new Todos()
-
-// id: "1",
-// title: "PJ1Todo1",
-// desc: "Todo1 Desc",
-// dueDate: "11/24/2024",
-// priority: "high",
