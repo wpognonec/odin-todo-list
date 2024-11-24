@@ -3,6 +3,8 @@ import "./style.css"
 import TodoItem from "./components/TodoItem"
 import { mount } from "./lib/dom"
 import Todos from "./models/todos"
+import generate from "./lib/generateTodos"
+generate()
 
 const app = document.querySelector("#app")
 

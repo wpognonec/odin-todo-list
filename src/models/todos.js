@@ -2,7 +2,13 @@ import { v4 as uuidv4 } from "uuid"
 
 class Todos {
   constructor() {
-    this.todos = JSON.parse(localStorage.getItem("todos") || "[]")
+    this.todos = []
+    const todoStore = JSON.parse(localStorage.getItem("todos") || "[]")
+    todoStore.forEach((todo) => {
+      this.todos.push(
+        new Todo(todo.id, todo.title, todo.desc, todo.dueDate, todo.priority)
+      )
+    })
   }
   getAll() {
     return this.todos
@@ -14,16 +20,32 @@ class Todos {
       exist = todo
     } else {
       if (!todo.id) todo.id = uuidv4()
-      todos.push(todo)
+      todos.push(
+        new Todo(todo.id, todo.title, todo.desc, todo.dueDate, todo.priority)
+      )
     }
     localStorage.setItem("todos", JSON.stringify(todos))
   }
   delete(id) {
-    const todos = this.getAll()
-    const filteredTodos = todos.filter((todo) => todo.id !== id)
-    this.todos = filteredTodos
-    localStorage.setItem("todos", JSON.stringify(filteredTodos))
+    this.todos.filter((todo) => todo.id !== id)
+    localStorage.setItem("todos", JSON.stringify(this.todos))
+  }
+}
+
+class Todo {
+  constructor(id, title, desc, dueDate, priority) {
+    this.id = id
+    this.title = title
+    this.desc = desc
+    this.dueDate = dueDate
+    this.priority = priority
   }
 }
 
 export default new Todos()
+
+// id: "1",
+// title: "PJ1Todo1",
+// desc: "Todo1 Desc",
+// dueDate: "11/24/2024",
+// priority: "high",
