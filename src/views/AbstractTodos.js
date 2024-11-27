@@ -1,4 +1,5 @@
-import { TodoItem } from "../components/TodoItem"
+// import { TodoItem } from "../components/TodoItem"
+import { TodoList } from "../components/TodoList"
 import { TodoForm } from "../components/TodoForm"
 import { el, mount } from "../lib/dom"
 import Todos from "../models/todos"
@@ -13,10 +14,7 @@ export default class AbstractTodos {
   }
   updateTodoList() {
     let todos = Todos.getAll()
-    const element = el(
-      "div",
-      todos.map((todo) => TodoItem(todo))
-    )
+    const element = TodoList(todos)
     this.todoList.textContent = ""
     mount(this.todoList, element)
   }
