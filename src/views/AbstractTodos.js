@@ -1,4 +1,3 @@
-// import { TodoItem } from "../components/TodoItem"
 import { TodoList } from "../components/TodoList"
 import { TodoForm } from "../components/TodoForm"
 import { el, mount } from "../lib/dom"

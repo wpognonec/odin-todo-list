@@ -24,11 +24,12 @@ export default class Week {
     addTodoButton.addEventListener("click", () => this.showDialog())
     todoForm.addEventListener("submit", (e) => {
       e.preventDefault()
-      const formData = new FormData(todoForm)
+      const formData = new FormData(e.target)
       let todo = {}
       formData.forEach((v, k) => (todo[k] = v))
       Todos.save(todo)
       this.updateTodoList()
+      todoForm.close()
     })
     this.root.appendChild(todoForm)
   }
