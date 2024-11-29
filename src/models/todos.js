@@ -35,6 +35,7 @@ class Todo {
     this.desc = todo.desc
     this.dueDate = todo.dueDate
     this.priority = todo.priority
+    this.completed = false
     this.projectId = todo.projectId || 0
   }
 }

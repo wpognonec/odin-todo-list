@@ -1,8 +1,50 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
 .w300 {
   width: 300px;
+}
+
+.todo-item {
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 200px;
+  /* line-height: 1rem; */
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+dialog {
+  margin: auto;
+}
+
+.todo-title {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.todo-desc {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.todo-due {
+  font-size: 14px;
 }

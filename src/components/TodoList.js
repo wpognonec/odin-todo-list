@@ -3,7 +3,7 @@ import { TodoItem } from "./TodoItem"
 
 export function TodoList(todos) {
   return el(
-    "div",
+    "div.todo-list",
     todos.map((todo) => TodoItem(todo))
   )
 }
