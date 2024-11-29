@@ -40,7 +40,7 @@ export default class Inbox {
   }
   addEventListeners() {
     this.todoList.addEventListener("click", (e) => {
-      if (e.target instanceof HTMLInputElement) {
+      if (e.target.hasAttribute("checkbox")) {
         Todos.toggleComplete(e.target.attributes["data-id"].value)
         this.updateTodoList()
       }

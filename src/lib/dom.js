@@ -11,7 +11,9 @@ function el(_tag, attrs = {}, children = []) {
   if (className) element.className = className
 
   for (const attr in attrs) {
-    element.setAttribute(attr, attrs[attr])
+    if (attrs[attr] === true) element.toggleAttribute(attr)
+    else if (typeof attrs[attr] !== "boolean")
+      element.setAttribute(attr, attrs[attr])
   }
 
   children.forEach((child) => {
