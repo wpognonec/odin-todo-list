@@ -11,6 +11,7 @@ export default class Inbox {
     mount(this.root, this.todoList)
     this.updateTodoList()
     this.createModal()
+    this.addEventListeners()
   }
   updateTodoList() {
     let todos = Todos.getAll()
@@ -36,5 +37,13 @@ export default class Inbox {
   showDialog() {
     const dialog = document.querySelector("#addTodoDialog")
     dialog.showModal()
+  }
+  addEventListeners() {
+    this.todoList.addEventListener("click", (e) => {
+      if (e.target instanceof HTMLInputElement) {
+        Todos.toggleComplete(e.target.attributes["data-id"].value)
+        this.updateTodoList()
+      }
+    })
   }
 }

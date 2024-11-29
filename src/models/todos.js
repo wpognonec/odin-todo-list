@@ -26,6 +26,14 @@ class Todos {
     this.todos.filter((todo) => todo.id !== id)
     localStorage.setItem("todos", JSON.stringify(this.todos))
   }
+  toggleComplete(id) {
+    const todos = this.getAll()
+    let exist = todos.find((todo) => todo.id === id)
+    if (exist) {
+      exist.completed = !exist.completed
+      localStorage.setItem("todos", JSON.stringify(todos))
+    }
+  }
 }
 
 class Todo {
@@ -35,7 +43,7 @@ class Todo {
     this.desc = todo.desc
     this.dueDate = todo.dueDate
     this.priority = todo.priority
-    this.completed = false
+    this.completed = todo.completed
     this.projectId = todo.projectId || 0
   }
 }
