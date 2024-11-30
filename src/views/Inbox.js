@@ -8,31 +8,18 @@ export default class Inbox {
     this.root = root
     this.root.textContent = "Inbox"
     this.todoList = el("div.todoList")
-    mount(this.root, this.todoList)
+    this.todoForm = TodoForm()
+    this.addTodoButton = document.querySelector("#addTodoButton")
     this.updateTodoList()
-    this.createModal()
     this.addEventListeners()
+    mount(this.root, this.todoList)
+    mount(this.root, this.todoForm)
   }
   updateTodoList() {
     let todos = Todos.getAll()
     const element = TodoList(todos)
     this.todoList.textContent = ""
     mount(this.todoList, element)
-  }
-  createModal() {
-    const todoForm = TodoForm()
-    const addTodoButton = document.querySelector("#addTodoButton")
-    addTodoButton.addEventListener("click", () => this.showDialog())
-    todoForm.addEventListener("submit", (e) => {
-      e.preventDefault()
-      const formData = new FormData(e.target)
-      let todo = {}
-      formData.forEach((v, k) => (todo[k] = v))
-      Todos.save(todo)
-      this.updateTodoList()
-      todoForm.close()
-    })
-    this.root.appendChild(todoForm)
   }
   showDialog() {
     const dialog = document.querySelector("#addTodoDialog")
@@ -50,6 +37,17 @@ export default class Inbox {
         Todos.delete(id)
         this.updateTodoList()
       }
+    })
+
+    this.addTodoButton.addEventListener("click", () => this.showDialog())
+    this.todoForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const formData = new FormData(e.target)
+      let todo = {}
+      formData.forEach((v, k) => (todo[k] = v))
+      Todos.save(todo)
+      this.updateTodoList()
+      this.todoForm.close()
     })
   }
 }
