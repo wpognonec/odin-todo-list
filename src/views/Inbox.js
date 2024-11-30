@@ -41,7 +41,13 @@ export default class Inbox {
   addEventListeners() {
     this.todoList.addEventListener("click", (e) => {
       if (e.target.hasAttribute("checkbox")) {
-        Todos.toggleComplete(e.target.attributes["data-id"].value)
+        let id = e.target.parentElement.attributes["data-id"].value
+        Todos.toggleComplete(id)
+        this.updateTodoList()
+      }
+      if (e.target.hasAttribute("delete")) {
+        let id = e.target.parentElement.attributes["data-id"].value
+        Todos.delete(id)
         this.updateTodoList()
       }
     })

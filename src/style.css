@@ -17,9 +17,15 @@ body {
 
 .todo-item {
   display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
   gap: 10px;
   padding: 5px;
   margin: 2px;
+}
+
+.delete {
+  margin-left: auto;
 }
 
 .todo-item:hover {
@@ -31,7 +37,7 @@ body {
   flex-direction: column;
   background: gray;
   border-radius: 5px;
-  width: 200px;
+  width: 250px;
   padding: 5px 0;
 }
 

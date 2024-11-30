@@ -23,7 +23,7 @@ class Todos {
     localStorage.setItem("todos", JSON.stringify(todos))
   }
   delete(id) {
-    this.todos.filter((todo) => todo.id !== id)
+    this.todos = this.todos.filter((todo) => todo.id !== id)
     localStorage.setItem("todos", JSON.stringify(this.todos))
   }
   toggleComplete(id) {
