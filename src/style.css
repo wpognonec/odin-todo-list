@@ -1,5 +1,19 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-button {
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: lightgray;
 }
 
 .flex-col {
