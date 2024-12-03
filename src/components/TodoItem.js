@@ -1,5 +1,6 @@
 import { el } from "../lib/dom"
 import delIcon from "/delete.svg"
+import { format } from "date-fns"
 
 export function TodoItem(todo) {
   let checkbox = el("input", {
@@ -12,7 +13,7 @@ export function TodoItem(todo) {
     el("div", [
       el("div.todo-title", [`${todo.title}`]),
       el("div.todo-desc", [`${todo.desc}`]),
-      el("div.todo-due", [`${todo.dueDate}`]),
+      el("div.todo-due", [`${format(todo.dueDate, "PP")}`]),
     ]),
     el("img.delete", {
       src: delIcon,
