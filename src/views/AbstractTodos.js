@@ -14,7 +14,7 @@ export default class AbstractTodos {
     this.updateTodoList()
     this.addEventListeners()
     mount(this.root, this.todoList)
-    mount(this.todoList, this.todoForm)
+    mount(this.root, this.todoForm)
   }
   updateTodoList() {}
   addEventListeners() {

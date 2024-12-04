@@ -13,7 +13,7 @@ export function TodoItem(todo) {
     el("div", [
       el("div.todo-title", [`${todo.title}`]),
       el("div.todo-desc", [`${todo.desc}`]),
-      el("div.todo-due", [`${format(todo.dueDate, "PP")}`]),
+      el("div.todo-due", [`${todo.dueDate ? format(todo.dueDate, "PP") : ""}`]),
     ]),
     el("img.delete", {
       src: delIcon,
