@@ -31,6 +31,7 @@ class Projects {
 
 class Project {
   constructor(project) {
+    this.id = project.id
     this.name = project.name
   }
 }

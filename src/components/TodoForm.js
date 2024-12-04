@@ -34,13 +34,13 @@ export function TodoForm(projectId = 0) {
             "select",
             {
               name: "priority",
-              id: "prioroty",
+              id: "priority",
             },
             [
-              el("option", ["Urgent"]),
-              el("option", ["High"]),
-              el("option", ["Medium"]),
-              el("option", ["Low"]),
+              el("option", { value: "Urgent" }, ["Urgent"]),
+              el("option", { value: "High" }, ["High"]),
+              el("option", { value: "Medium" }, ["Medium"]),
+              el("option", { value: "Low" }, ["Low"]),
             ]
           ),
           el("button", ["Submit"]),

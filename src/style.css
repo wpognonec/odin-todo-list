@@ -1,19 +1,24 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
+  color: #cdd6f4;
+  background: #1e1e2e;
 }
 
 #menu {
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  width: 200px;
 }
 
 .menu-button {
   cursor: pointer;
+  /* padding: 10px; */
 }
 
 .menu-button:hover {
-  background: lightgray;
+  background: #313244;
 }
 
 .flex-col {
@@ -38,25 +43,47 @@ body {
   margin: 2px;
 }
 
-.delete {
+.itemButtons {
+  display: flex;
   margin-left: auto;
 }
 
 .todo-item:hover {
-  background: lightgray;
+  background: #313244;
 }
 
 .todo-list {
   display: flex;
   flex-direction: column;
-  background: gray;
+  background: #181825;
   border-radius: 5px;
   width: 250px;
   padding: 5px 0;
 }
 
 dialog {
+  background: none;
   margin: auto;
+  padding: 0;
+  border: none;
+}
+
+form {
+  color: #cdd6f4;
+  padding: 20px;
+  background: #181825;
+  border-radius: 5px;
+}
+
+input,
+select {
+  background: #313244;
+  border: none;
+  color: #cdd6f4;
+}
+
+select {
+  height: 26px;
 }
 
 .todo-title {

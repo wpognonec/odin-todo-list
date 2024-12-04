@@ -7,6 +7,7 @@ export default class AbstractTodos {
     this.root = root
     this.root.textContent = title
     this.projectId = projectId
+    this.editingId = 0
     this.todos = Todos
     this.todoList = el("div.todoList")
     this.todoForm = TodoForm(projectId)
@@ -25,9 +26,21 @@ export default class AbstractTodos {
         this.updateTodoList()
       }
       if (e.target.hasAttribute("delete")) {
-        let id = e.target.parentElement.attributes["data-id"].value
+        let id =
+          e.target.parentElement.parentElement.attributes["data-id"].value
         this.todos.delete(id)
         this.updateTodoList()
+      }
+      if (e.target.hasAttribute("edit")) {
+        let id =
+          e.target.parentElement.parentElement.attributes["data-id"].value
+        let todo = this.todos.get(id)
+        this.editingId = id
+        document.querySelector("#title").value = todo.title
+        document.querySelector("#desc").value = todo.desc
+        document.querySelector("#dueDate").value = todo.dueDate
+        document.querySelector("#priority").value = todo.priority
+        this.todoForm.showModal()
       }
       if (e.target.hasAttribute("add")) {
         this.todoForm.showModal()
@@ -35,14 +48,19 @@ export default class AbstractTodos {
       }
     })
     this.todoForm.addEventListener("submit", (e) => {
-      e.preventDefault()
       const formData = new FormData(e.target)
       let todo = {}
       formData.forEach((v, k) => (todo[k] = v))
       todo.projectId = this.projectId
+      if (this.editingId) todo.id = this.editingId
+      this.editingId = 0
       this.todos.save(todo)
       this.updateTodoList()
       this.todoForm.close()
+    })
+    this.todoForm.addEventListener("close", () => {
+      this.editingId = 0
+      document.querySelector("form").reset()
     })
   }
 }
