@@ -21,7 +21,8 @@ export default class AbstractTodos {
   addEventListeners() {
     this.todoList.addEventListener("click", (e) => {
       if (e.target.hasAttribute("checkbox")) {
-        let id = e.target.parentElement.attributes["data-id"].value
+        let id =
+          e.target.parentElement.parentElement.attributes["data-id"].value
         this.todos.toggleComplete(id)
         this.updateTodoList()
       }

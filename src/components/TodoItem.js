@@ -4,11 +4,14 @@ import editIcon from "/edit.svg"
 import { format, parseISO } from "date-fns"
 
 export function TodoItem(todo) {
-  let checkbox = el("input", {
-    type: "checkbox",
-    checkbox: true,
-    checked: todo.completed ? true : false,
-  })
+  let checkbox = el("label.checkbox", [
+    el("input", {
+      type: "checkbox",
+      checkbox: true,
+      checked: todo.completed ? true : false,
+    }),
+  ])
+
   return el("div.todo-item", { "data-id": todo.id }, [
     checkbox,
     el("div", [

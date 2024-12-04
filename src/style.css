@@ -12,6 +12,11 @@ body {
   width: 200px;
 }
 
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .menu-button {
   cursor: pointer;
   /* padding: 10px; */
@@ -36,7 +41,6 @@ body {
 
 .todo-item {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   gap: 10px;
   padding: 5px;
@@ -102,4 +106,8 @@ select {
 
 #addTodoButton {
   margin: 0 5px;
+}
+
+#add-project {
+  margin-top: 20px;
 }

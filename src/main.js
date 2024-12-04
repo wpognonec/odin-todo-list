@@ -3,9 +3,13 @@ import "./style.css"
 import Inbox from "./views/Inbox"
 import Week from "./views/Week"
 import Project from "./views/Project"
+import { ProjectList } from "./components/ProjectList"
+import Projects from "./models/projects"
 
 const app = document.querySelector("#app")
 const menu = document.querySelector("#menu")
+
+menu.append(ProjectList(Projects.getAll()))
 
 new Inbox(app, "Inbox")
 
@@ -18,13 +22,23 @@ menu.addEventListener("click", (e) => {
       break
     case "week-button":
       app.textContent = ""
-      new Week(app, "Week", "2")
+      new Week(app, "Week", "0")
       break
     case "project-button":
       app.textContent = ""
-      new Project(app, "Project", "1")
+      new Project(app, "Project", e.target.getAttribute("projectId"))
       break
     default:
       break
+  }
+})
+
+document.querySelector("#add-project").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    let newProj = { name: e.target.value }
+    Projects.save(newProj)
+    e.target.value = ""
+    document.querySelector(".project-list").remove()
+    menu.append(ProjectList(Projects.getAll()))
   }
 })
