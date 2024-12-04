@@ -2,7 +2,7 @@ import "./reset.css"
 import "./style.css"
 import Inbox from "./views/Inbox"
 import Week from "./views/Week"
-import Project from "./views/Project"
+import Projects from "./views/Projects"
 
 const app = document.querySelector("#app")
 const menu = document.querySelector("#menu")
@@ -22,7 +22,7 @@ menu.addEventListener("click", (e) => {
       break
     case "project-button":
       app.textContent = ""
-      new Project(app, "Project", "1")
+      new Projects(app)
       break
     default:
       break

@@ -43,21 +43,6 @@ export function TodoForm(projectId = 0) {
               el("option", ["Low"]),
             ]
           ),
-          el("label", ["Project"]),
-          // el(
-          //   "select",
-          //   {
-          //     name: "projectId",
-          //     id: "projectId",
-          //   },
-          //   [
-          //     el("option", { value: "0" }, ["Inbox"]),
-          //     el("option", { value: "1" }, ["Project 1"]),
-          //     el("option", { value: "2" }, ["Project 2"]),
-          //     el("option", { value: "3" }, ["Project 3"]),
-          //     el("option", { value: "4" }, ["Project 4"]),
-          //   ]
-          // ),
           el("button", ["Submit"]),
         ]
       ),

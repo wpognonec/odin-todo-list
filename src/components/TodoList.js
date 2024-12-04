@@ -2,10 +2,10 @@ import { el } from "../lib/dom"
 import { TodoItem } from "./TodoItem"
 
 export function TodoList(todos) {
-  return el("div.wrapper", [
+  return el("div.todo-list", [
     el("button#addTodoButton", { add: true }, ["Add Todo"]),
     el(
-      "div.todo-list",
+      "div",
       todos.map((todo) => TodoItem(todo))
     ),
   ])
