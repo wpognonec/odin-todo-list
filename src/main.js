@@ -14,22 +14,29 @@ menu.append(ProjectList(Projects.getAll()))
 new Inbox(app, "Inbox")
 
 menu.addEventListener("click", (e) => {
-  console.log(e.target.id)
-  switch (e.target.id) {
-    case "inbox-button":
-      app.textContent = ""
-      new Inbox(app, "Inbox", "0")
-      break
-    case "week-button":
-      app.textContent = ""
-      new Week(app, "Week", "0")
-      break
-    case "project-button":
-      app.textContent = ""
-      new Project(app, "Project", e.target.getAttribute("projectId"))
-      break
-    default:
-      break
+  if (e.target.classList.contains("menu-button")) {
+    let buttons = document.querySelectorAll(".menu-button")
+    buttons.forEach((el) => {
+      el.classList.remove("selected")
+    })
+    e.target.classList.add("selected")
+
+    switch (e.target.id) {
+      case "inbox-button":
+        app.textContent = ""
+        new Inbox(app, "Inbox", "0")
+        break
+      case "week-button":
+        app.textContent = ""
+        new Week(app, "Week", "0")
+        break
+      case "project-button":
+        app.textContent = ""
+        new Project(app, "Project", e.target.getAttribute("projectId"))
+        break
+      default:
+        break
+    }
   }
 })
 

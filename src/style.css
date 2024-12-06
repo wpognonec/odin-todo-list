@@ -109,5 +109,10 @@ select {
 }
 
 #add-project {
-  margin-top: 20px;
+  margin: 10px 0;
+  background: #181825;
+}
+
+.selected {
+  background: #313244;
 }
