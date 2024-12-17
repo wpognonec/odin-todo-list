@@ -4,7 +4,7 @@ import AbstractTodos from "./AbstractTodos"
 
 export default class Inbox extends AbstractTodos {
   updateTodoList() {
-    const element = TodoList(this.todos.getAll())
+    const element = TodoList(this.todos.getAll(), "Inbox")
     this.todoList.textContent = ""
     mount(this.todoList, element)
   }

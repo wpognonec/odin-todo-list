@@ -12,6 +12,9 @@ class Projects {
   getAll() {
     return this.projects
   }
+  get(id) {
+    return this.projects.find((p) => p.id === id)
+  }
   save(project) {
     const projects = this.getAll()
     let exist = projects.find((p) => p.id === project.id)
