@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid"
-// import Todo from "./todo"
+import Todos from "./todos"
 
 class Projects {
   constructor() {
@@ -27,7 +27,9 @@ class Projects {
     localStorage.setItem("projects", JSON.stringify(projects))
   }
   delete(id) {
-    this.projects.filter((project) => project.id !== id)
+    let tds = Todos.getAll(id)
+    tds.forEach((td) => Todos.delete(td.id))
+    this.projects = this.projects.filter((project) => project.id !== id)
     localStorage.setItem("projects", JSON.stringify(this.projects))
   }
 }

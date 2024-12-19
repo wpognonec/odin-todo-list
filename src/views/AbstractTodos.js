@@ -9,21 +9,25 @@ export default class Index {
     this.root = root
     this.projectId = projectId
     this.editingId = 0
+    this.projects = Projects
     this.todos = Todos
-    this.todoList = el("div.todoList")
+    this.todoList = el("div.tl-wrapper")
+    this.projectList = el("div.pl-wrapper")
     this.todoForm = TodoForm(projectId)
     this.addTodoButton = document.querySelector("#addTodoButton")
     this.menu = document.querySelector("#menu")
     this.updateProjectList()
     this.updateTodoList()
     this.addEventListeners()
-    mount(this.root, this.todoList)
     mount(this.root, this.todoForm)
+    mount(this.root, this.todoList)
+    mount(this.menu, this.projectList)
   }
   updateTodoList() {}
   updateProjectList() {
+    const element = ProjectList(this.projects.getAll())
     document.querySelector(".project-list")?.remove()
-    this.menu.append(ProjectList(Projects.getAll()))
+    mount(this.projectList, element)
   }
   addEventListeners() {
     this.todoList.addEventListener("click", (e) => {
@@ -69,6 +73,14 @@ export default class Index {
     this.todoForm.addEventListener("close", () => {
       this.editingId = 0
       document.querySelector("form").reset()
+    })
+    this.projectList.addEventListener("click", (e) => {
+      if (e.target.hasAttribute("delete")) {
+        let id = e.target.closest(".project-item").attributes["data-id"].value
+        this.projects.delete(id)
+        this.updateProjectList()
+        this.updateTodoList()
+      }
     })
     document.querySelector("#add-project").addEventListener("keypress", (e) => {
       if (e.key === "Enter") {

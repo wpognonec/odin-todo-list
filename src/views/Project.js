@@ -7,7 +7,7 @@ export default class Project extends AbstractTodos {
   updateTodoList() {
     const project = Projects.get(this.projectId)
     const element = TodoList(this.todos.getAll(this.projectId), project.name)
-    this.todoList.textContent = ""
+    document.querySelector(".todo-list")?.remove()
     mount(this.todoList, element)
   }
 }

@@ -19,15 +19,12 @@ menu.addEventListener("click", (e) => {
 
     switch (e.target.id) {
       case "inbox-button":
-        app.textContent = ""
         new Inbox(app)
         break
       case "week-button":
-        app.textContent = ""
         new Week(app)
         break
       case "project-button":
-        app.textContent = ""
         new Project(app, e.target.getAttribute("projectId"))
         break
       default:
