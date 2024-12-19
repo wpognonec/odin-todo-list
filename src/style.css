@@ -47,7 +47,7 @@ body {
   margin: 2px;
 }
 
-.itemButtons {
+.item-buttons {
   display: flex;
   margin-left: auto;
 }
@@ -104,7 +104,7 @@ select {
   font-size: 14px;
 }
 
-#addTodoButton {
+#add-todo-button {
   margin: 0 5px;
 }
 

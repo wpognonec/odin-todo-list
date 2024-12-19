@@ -14,7 +14,7 @@ export default class Index {
     this.todoList = el("div.tl-wrapper")
     this.projectList = el("div.pl-wrapper")
     this.todoForm = TodoForm(projectId)
-    this.addTodoButton = document.querySelector("#addTodoButton")
+    this.addTodoButton = document.querySelector("#add-todo-button")
     this.menu = document.querySelector("#menu")
     this.updateProjectList()
     this.updateTodoList()

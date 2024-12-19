@@ -4,7 +4,7 @@ import { TodoItem } from "./TodoItem"
 export function TodoList(todos, title) {
   return el("div.todo-list", [
     el("div", [title]),
-    el("button#addTodoButton", { add: true }, ["Add Todo"]),
+    el("button#add-todo-button", { add: true }, ["Add Todo"]),
     el(
       "div",
       todos.map((todo) => TodoItem(todo))
