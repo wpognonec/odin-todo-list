@@ -3,6 +3,7 @@ body {
   display: flex;
   color: #cdd6f4;
   background: #1e1e2e;
+  padding-top: 10px;
 }
 
 #menu {
@@ -19,7 +20,20 @@ body {
 
 .menu-button {
   cursor: pointer;
-  /* padding: 10px; */
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.add:hover {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(8%) saturate(1494%) hue-rotate(59deg) brightness(95%) contrast(89%);
+}
+
+.delete:hover {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(39%) saturate(691%) hue-rotate(300deg) brightness(96%) contrast(98%);
+}
+
+.edit:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(29%) saturate(517%) hue-rotate(329deg) brightness(106%) contrast(95%);
 }
 
 .menu-button:hover {
@@ -37,6 +51,12 @@ body {
 
 .w300 {
   width: 300px;
+}
+
+.todo-list-title {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
 }
 
 .todo-item {

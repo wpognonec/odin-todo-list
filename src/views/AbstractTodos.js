@@ -5,7 +5,8 @@ import Todos from "../models/todos"
 export default class AbstractTodos {
   constructor(root, title, projectId) {
     this.root = root
-    this.root.textContent = title
+    this.title = title
+    // this.root.textContent = title
     this.projectId = projectId
     this.editingId = 0
     this.todos = Todos

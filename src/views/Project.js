@@ -4,7 +4,7 @@ import AbstractTodos from "./AbstractTodos"
 
 export default class Project extends AbstractTodos {
   updateTodoList() {
-    const element = TodoList(this.todos.getAll(this.projectId))
+    const element = TodoList(this.todos.getAll(this.projectId), this.title)
     this.todoList.textContent = ""
     mount(this.todoList, element)
   }

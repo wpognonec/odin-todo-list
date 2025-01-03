@@ -4,7 +4,7 @@ import AbstractTodos from "./AbstractTodos"
 
 export default class Week extends AbstractTodos {
   updateTodoList() {
-    const element = TodoList(this.todos.getWeek())
+    const element = TodoList(this.todos.getWeek(), this.title)
     this.todoList.textContent = ""
     mount(this.todoList, element)
   }
