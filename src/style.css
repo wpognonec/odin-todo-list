@@ -86,6 +86,28 @@ body {
   padding: 5px 0;
 }
 
+.priority {
+  font-size: 12px;
+  margin-right: 10px;
+  /* line-height: 16px; */
+}
+
+.low {
+  color: #a6e3a1
+}
+
+.medium {
+  color: #f9e2af
+}
+
+.high {
+  color: #fab387
+}
+
+.urgent {
+  color: #f38ba8;
+}
+
 dialog {
   background: none;
   margin: auto;
@@ -130,7 +152,7 @@ select {
 }
 
 .todo-due {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #addTodoButton {

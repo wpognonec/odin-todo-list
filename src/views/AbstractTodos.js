@@ -6,7 +6,6 @@ export default class AbstractTodos {
   constructor(root, title, projectId) {
     this.root = root
     this.title = title
-    // this.root.textContent = title
     this.projectId = projectId
     this.editingId = 0
     this.todos = Todos
@@ -22,8 +21,7 @@ export default class AbstractTodos {
   addEventListeners() {
     this.todoList.addEventListener("click", (e) => {
       if (e.target.hasAttribute("checkbox")) {
-        let id =
-          e.target.parentElement.parentElement.attributes["data-id"].value
+        let id = e.target.closest("[data-id]").dataset.id
         this.todos.toggleComplete(id)
         this.updateTodoList()
       }

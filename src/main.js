@@ -32,7 +32,11 @@ menu.addEventListener("click", (e) => {
         break
       case "project-button":
         app.textContent = ""
-        new Project(app, e.target.textContent, e.target.getAttribute("projectId"))
+        new Project(
+          app,
+          e.target.textContent,
+          e.target.getAttribute("projectId")
+        )
         break
       default:
         break
