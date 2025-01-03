@@ -15,11 +15,13 @@ export function TodoForm(projectId = 0) {
         [
           el("label", ["Title"]),
           el("input", {
+            type: "text",
             name: "title",
             id: "title",
           }),
           el("label", ["Description"]),
           el("input", {
+            type: "text",
             name: "desc",
             id: "desc",
           }),
