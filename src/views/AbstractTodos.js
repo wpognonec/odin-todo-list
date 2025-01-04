@@ -26,14 +26,12 @@ export default class AbstractTodos {
         this.updateTodoList()
       }
       if (e.target.hasAttribute("delete")) {
-        let id =
-          e.target.parentElement.parentElement.attributes["data-id"].value
+        let id = e.target.closest("[data-id]").dataset.id
         this.todos.delete(id)
         this.updateTodoList()
       }
       if (e.target.hasAttribute("edit")) {
-        let id =
-          e.target.parentElement.parentElement.attributes["data-id"].value
+        let id = e.target.closest("[data-id]").dataset.id
         let todo = this.todos.get(id)
         this.editingId = id
         document.querySelector("#title").value = todo.title

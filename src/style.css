@@ -9,7 +9,7 @@ body {
 #menu {
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 0px 20px;
   width: 200px;
 }
 
@@ -89,7 +89,10 @@ body {
 .priority {
   font-size: 12px;
   margin-right: 10px;
-  /* line-height: 16px; */
+}
+
+.checkbox:hover {
+  filter: brightness(0) saturate(100%) invert(74%) sepia(13%) saturate(5544%) hue-rotate(188deg) brightness(102%) contrast(96%);
 }
 
 .low {
