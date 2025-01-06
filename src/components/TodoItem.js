@@ -23,7 +23,7 @@ export function TodoItem(todo) {
         `${todo.dueDate ? format(parseISO(todo.dueDate), "M/d/yy") : ""}`,
       ]),
     ]),
-    el("div.itemButtons", [
+    el("div.item-buttons", [
       el("img.edit", {
         src: editIcon,
         edit: true,

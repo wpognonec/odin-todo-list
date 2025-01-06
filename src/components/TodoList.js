@@ -1,12 +1,12 @@
-import { el } from "../lib/dom";
-import { TodoItem } from "./TodoItem";
-import addIcon from "/add.svg";
+import { el } from "../lib/dom"
+import { TodoItem } from "./TodoItem"
+import addIcon from "/add.svg"
 
-export function TodoList(todos, title = "test") {
+export function TodoList(todos, title) {
   return el("div.todo-list", [
     el("div.todo-list-title", [
       el("h2", [title]),
-      el("img.add.itemButtons", {
+      el("img.add.item-buttons", {
         src: addIcon,
         add: true,
         width: "36px",
@@ -17,5 +17,5 @@ export function TodoList(todos, title = "test") {
       "div",
       todos.map((todo) => TodoItem(todo))
     ),
-  ]);
+  ])
 }

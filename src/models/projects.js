@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid"
+import Todos from "./todos"
 // import Todo from "./todo"
 
 class Projects {
@@ -12,6 +13,9 @@ class Projects {
   getAll() {
     return this.projects
   }
+  get(id) {
+    return this.projects.find((p) => p.id === id)
+  }
   save(project) {
     const projects = this.getAll()
     let exist = projects.find((p) => p.id === project.id)
@@ -24,7 +28,9 @@ class Projects {
     localStorage.setItem("projects", JSON.stringify(projects))
   }
   delete(id) {
-    this.projects.filter((project) => project.id !== id)
+    let tds = Todos.getAll(id)
+    tds.forEach((td) => Todos.delete(td.id))
+    this.projects = this.projects.filter((project) => project.id !== id)
     localStorage.setItem("projects", JSON.stringify(this.projects))
   }
 }
