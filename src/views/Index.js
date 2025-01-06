@@ -1,40 +1,53 @@
 import { TodoForm } from "../components/TodoForm"
+import { TodoList } from "../components/TodoList"
+import { ProjectList } from "../components/ProjectList"
 import { el, mount } from "../lib/dom"
 import Todos from "../models/todos"
 import Projects from "../models/projects"
-import { ProjectList } from "../components/ProjectList"
 
 export default class Index {
-  constructor(root, title, projectId) {
-    this.root = root
-    this.title = title
-    this.projectId = projectId
+  constructor() {
+    this.title = "Inbox"
+    this.projectId = "inbox"
     this.editingId = 0
     this.projects = Projects
     this.todos = Todos
     this.todoList = el("div.tl-wrapper")
     this.projectList = el("div.pl-wrapper")
-    this.todoForm = TodoForm(projectId)
+    this.todoForm = TodoForm(this.projectId)
     this.menu = document.querySelector("#menu")
+    this.app = document.querySelector("#app")
     this.updateProjectList()
     this.updateTodoList()
     this.render()
     this.addEventListeners()
-    document
-      .querySelector(`a[data-id="${projectId}"]`)
-      .classList.add("selected")
   }
 
   render() {
-    document.querySelector(".pl-wrapper")?.remove()
-    document.querySelector(".tl-wrapper")?.remove()
-    document.querySelector("#addTodoDialog")?.remove()
-    mount(this.root, this.todoForm)
-    mount(this.root, this.todoList)
+    mount(this.app, this.todoForm)
+    mount(this.app, this.todoList)
     mount(this.menu, this.projectList)
   }
 
-  updateTodoList() {}
+  updateTodoList() {
+    let element
+    switch (this.projectId) {
+      case "inbox":
+        this.title = "Inbox"
+        element = TodoList(this.todos.getAll(), this.title)
+        break
+      case "week":
+        this.title = "Week"
+        element = TodoList(this.todos.getWeek(), this.title)
+        break
+      default:
+        this.title = Projects.get(this.projectId).name
+        element = TodoList(this.todos.getAll(this.projectId), this.title)
+        break
+    }
+    document.querySelector(".todo-list")?.remove()
+    mount(this.todoList, element)
+  }
 
   updateProjectList() {
     const element = ProjectList(this.projects.getAll())
@@ -43,6 +56,21 @@ export default class Index {
   }
 
   addEventListeners() {
+    this.menu.addEventListener("click", (e) => {
+      if (e.target.classList.contains("menu-button")) {
+        this.projectId = e.target.attributes["data-id"].value
+        let buttons = document.querySelectorAll(".menu-button")
+        buttons.forEach((el) => {
+          el.classList.remove("selected")
+        })
+        document
+          .querySelector(`a[data-id="${this.projectId}"]`)
+          .classList.add("selected")
+
+        this.updateTodoList()
+      }
+    })
+
     this.todoList.addEventListener("click", (e) => {
       if (e.target.hasAttribute("checkbox")) {
         let id = e.target.closest("[data-id]").dataset.id
