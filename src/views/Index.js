@@ -59,14 +59,7 @@ export default class Index {
     this.menu.addEventListener("click", (e) => {
       if (e.target.classList.contains("menu-button")) {
         this.projectId = e.target.attributes["data-id"].value
-        let buttons = document.querySelectorAll(".menu-button")
-        buttons.forEach((el) => {
-          el.classList.remove("selected")
-        })
-        document
-          .querySelector(`a[data-id="${this.projectId}"]`)
-          .classList.add("selected")
-
+        this._selectMenuButton(this.projectId)
         this.updateTodoList()
       }
     })
@@ -133,5 +126,11 @@ export default class Index {
         this.updateProjectList()
       }
     })
+  }
+
+  _selectMenuButton(id) {
+    let buttons = document.querySelectorAll(".menu-button")
+    buttons.forEach((el) => el.classList.remove("selected"))
+    document.querySelector(`a[data-id="${id}"]`).classList.add("selected")
   }
 }
